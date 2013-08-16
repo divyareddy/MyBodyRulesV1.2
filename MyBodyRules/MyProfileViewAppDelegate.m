@@ -6,14 +6,18 @@
 //  Copyright (c) 2013 Divya Reddy. All rights reserved.
 //
 
-#import "FirstIpadViewAppDelegate.h"
+#import "MyProfileViewAppDelegate.h"
 
-@implementation FirstIpadViewAppDelegate
+@implementation MyProfileViewAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     return YES;
+}
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return (UIInterfaceOrientationMaskAll);
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
