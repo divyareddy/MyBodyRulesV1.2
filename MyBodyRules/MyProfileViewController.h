@@ -8,18 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyProfileViewController : UIViewController
+@interface MyProfileViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate>
 {
     UIButton *bodyMeasurements;
      UIButton *myProfile;
      UIButton *summary;
+    UIImageView *photoImageView1,*photoImageView2;
   
 
 }
-@property (nonatomic,retain) IBOutlet UIButton *summary,*myProfile,*bodyMeasurements;
+@property (strong) UIPopoverController *popoverImageViewController;
+@property (nonatomic, strong) UIImage *unrotatedImage;
+@property (nonatomic,strong) IBOutlet UIButton *summary,*myProfile,*bodyMeasurements;
+@property (nonatomic, strong) IBOutlet UIImageView *photoImageView1,*photoImageView2;
 - (IBAction)whenbodyMeasurementsClicked;
 - (IBAction)whenmyProfileClicked;
 - (IBAction)whensummaryClicked;
+
+-(IBAction)btnPhotoClick:(id)sender;
 
 
 

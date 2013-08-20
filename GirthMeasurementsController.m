@@ -14,8 +14,8 @@
 @end
 
 @implementation GirthMeasurementsController
+@synthesize  shoulderField,hipsField, chestField,rThighField,navalField,lThighField,rBicepField,rCalfField,lBicepField,lCalfField;
 
-@synthesize shoulderField,rBicepField,lBicepField,rCalfField,rThighField,resetButton,lCalfField,lThighField,navalField,calculateButton,totalLabel,chestField,hipsField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,14 +29,44 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+
     // Do any additional setup after loading the view from its nib.
 }
 
--(IBAction)calculateButtonClicked:(id)sender{
+-(IBAction)calculateButtonClicked{
     
-    NSLog(@"HI");
+   // NSLog(@"HI");
+    int girthTotal = [shoulderField.text intValue]+[hipsField.text intValue]+[chestField.text intValue]+
+    [rThighField.text intValue]+[navalField.text intValue]+[lThighField.text intValue]+[rBicepField.text intValue]+[rCalfField.text intValue]+[lBicepField.text intValue]+[lCalfField.text intValue];
+
+    self.totalLabel.text =[NSString stringWithFormat: @"%d", girthTotal];
+
+    
     
 }
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == self.shoulderField || textField == self.hipsField ||textField == self.chestField ||textField == self.rThighField ||textField == self.navalField ||textField == self.lThighField ||textField == self.rBicepField ||textField == self.rCalfField||textField == self.lBicepField||textField == self.lCalfField )
+    {
+        NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        
+        NSString *expression = @"^([0-9]+)?(\\.([0-9]{1,2})?)?$";
+        
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:expression
+                                                                               options:NSRegularExpressionCaseInsensitive
+                                                                                 error:nil];
+        NSUInteger numberOfMatches = [regex numberOfMatchesInString:newString
+                                                            options:0
+                                                              range:NSMakeRange(0, [newString length])];
+        if (numberOfMatches == 0)
+            return NO;
+    }
+    
+    return YES;
+}
+
 
 - (void)didReceiveMemoryWarning
 {

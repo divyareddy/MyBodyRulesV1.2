@@ -8,17 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BodyMeasurementsController : UIViewController
+@interface BodyMeasurementsController : UIViewController <UITextFieldDelegate>
 {
-     
-     UISegmentedControl *genderField;
-     UITextField *tricepField,*umbilicusField,*siliacField,*subscapField,*axilaField,*pecField,*thighField,*nameTextField, *ageTextField,*dateTextField,*weightTextField;
-     UIButton *calculateButton,*resetButton;
-    
-     UILabel *skinfoldLabel,*bodydensityLabel,*bodyfatLabel,*leanbodymassLabel;
+
 
 }
-@property(nonatomic,retain) IBOutlet UITextField *tricepField,*umbilicusField,*siliacField,*subscapField,*axilaField,*pecField,*thighField,*nameTextField, *ageTextField,*dateTextField,*weightTextField;
+@property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
+@property(nonatomic, weak) IBOutlet UITextField *tricepField,*umbilicusField,*siliacField,*subscapField,*axilaField,*pecField,*thighField,*nameTextField, *ageTextField,*dateTextField,*weightTextField;
 @property(nonatomic,retain) IBOutlet UIButton *calculateButton,*resetButton;
 @property (nonatomic,retain) IBOutlet UILabel *skinfoldLabel,*bodydensityLabel,*bodyfatLabel,*leanbodymassLabel;
 @property(nonatomic,retain) IBOutlet UISegmentedControl *genderField;

@@ -8,15 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GirthMeasurementsController : UIViewController
+@interface GirthMeasurementsController : UIViewController <UITextFieldDelegate>
 {
-    UITextField *shoulderField,*hipsField, *chestField,*rThighField,*navalField,*lThighField,*rBicepField,*rCalfField,*lBicepField,*lCalfField;
-    UILabel *totalLabel;
-    UIButton *calculateButton,*resetButton;
+
+    
 }
 
-@property(nonatomic,retain) IBOutlet UITextField *shoulderField,*hipsField, *chestField,*rThighField,*navalField,*lThighField,*rBicepField,*rCalfField,*lBicepField,*lCalfField;
-@property(nonatomic,retain) IBOutlet UILabel *totalLabel;
-@property (nonatomic,retain)IBOutlet UIButton *calculateButton,*resetButton;
+@property(nonatomic,weak) IBOutlet UITextField *shoulderField,*hipsField, *chestField,*rThighField,*navalField,*lThighField,*rBicepField,*rCalfField,*lBicepField,*lCalfField;
+@property(nonatomic,weak) IBOutlet UILabel *totalLabel;
 
--(IBAction)calculateButtonClicked:(id)sender;
+
+-(IBAction)calculateButtonClicked;

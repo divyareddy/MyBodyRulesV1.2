@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170EEE9E17BF6EE200F7CF7E /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EEE9D17BF6EE200F7CF7E /* TPKeyboardAvoidingScrollView.m */; };
 		D35C116917BE10AE0002A6AF /* GirthMeasurementsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D35C116717BE10AE0002A6AF /* GirthMeasurementsController.m */; };
-		D35C116A17BE10AE0002A6AF /* GirthMeasurementsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D35C116817BE10AE0002A6AF /* GirthMeasurementsController.xib */; };
 		D35C116E17BE21A10002A6AF /* BodyMeasurementsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D35C116C17BE21A10002A6AF /* BodyMeasurementsController.m */; };
-		D35C116F17BE21A10002A6AF /* BodyMeasurementsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D35C116D17BE21A10002A6AF /* BodyMeasurementsController.xib */; };
 		D3B6B28917B38F910008DDFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B6B28817B38F910008DDFA /* UIKit.framework */; };
 		D3B6B28B17B38F910008DDFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B6B28A17B38F910008DDFA /* Foundation.framework */; };
 		D3B6B28D17B38F910008DDFA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B6B28C17B38F910008DDFA /* CoreGraphics.framework */; };
@@ -22,15 +21,17 @@
 		D3B6B29F17B38F910008DDFA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B6B29E17B38F910008DDFA /* Default-568h@2x.png */; };
 		D3B6B2A217B38F910008DDFA /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3B6B2A017B38F910008DDFA /* MainStoryboard.storyboard */; };
 		D3B6B2A517B38F910008DDFA /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B2A417B38F910008DDFA /* MyProfileViewController.m */; };
+		D3DE6D6917C0F28900825EAF /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D3DE6D6817C0F28900825EAF /* images.jpeg */; };
+		D3DE6D6B17C0F53300825EAF /* back.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D3DE6D6A17C0F53300825EAF /* back.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		170EEE9C17BF6EE200F7CF7E /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		170EEE9D17BF6EE200F7CF7E /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		D35C116617BE10AE0002A6AF /* GirthMeasurementsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GirthMeasurementsController.h; path = ../GirthMeasurementsController.h; sourceTree = "<group>"; };
 		D35C116717BE10AE0002A6AF /* GirthMeasurementsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GirthMeasurementsController.m; path = ../GirthMeasurementsController.m; sourceTree = "<group>"; };
-		D35C116817BE10AE0002A6AF /* GirthMeasurementsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GirthMeasurementsController.xib; path = ../GirthMeasurementsController.xib; sourceTree = "<group>"; };
 		D35C116B17BE21A10002A6AF /* BodyMeasurementsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyMeasurementsController.h; sourceTree = "<group>"; };
 		D35C116C17BE21A10002A6AF /* BodyMeasurementsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyMeasurementsController.m; sourceTree = "<group>"; };
-		D35C116D17BE21A10002A6AF /* BodyMeasurementsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BodyMeasurementsController.xib; sourceTree = "<group>"; };
 		D3B6B28517B38F910008DDFA /* MyBodyRules.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBodyRules.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B6B28817B38F910008DDFA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D3B6B28A17B38F910008DDFA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -47,6 +48,8 @@
 		D3B6B2A117B38F910008DDFA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		D3B6B2A317B38F910008DDFA /* MyProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyProfileViewController.h; sourceTree = "<group>"; };
 		D3B6B2A417B38F910008DDFA /* MyProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyProfileViewController.m; sourceTree = "<group>"; };
+		D3DE6D6817C0F28900825EAF /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
+		D3DE6D6A17C0F53300825EAF /* back.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = back.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		170EEE9B17BF6EE200F7CF7E /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				170EEE9C17BF6EE200F7CF7E /* TPKeyboardAvoidingScrollView.h */,
+				170EEE9D17BF6EE200F7CF7E /* TPKeyboardAvoidingScrollView.m */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		D3B6B27C17B38F910008DDFA = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +105,7 @@
 		D3B6B28E17B38F910008DDFA /* MyBodyRules */ = {
 			isa = PBXGroup;
 			children = (
+				170EEE9B17BF6EE200F7CF7E /* Custom */,
 				D3B6B29717B38F910008DDFA /* MyProfileViewAppDelegate.h */,
 				D3B6B29817B38F910008DDFA /* MyProfileViewAppDelegate.m */,
 				D3B6B2A017B38F910008DDFA /* MainStoryboard.storyboard */,
@@ -100,10 +113,8 @@
 				D3B6B2A417B38F910008DDFA /* MyProfileViewController.m */,
 				D35C116B17BE21A10002A6AF /* BodyMeasurementsController.h */,
 				D35C116C17BE21A10002A6AF /* BodyMeasurementsController.m */,
-				D35C116D17BE21A10002A6AF /* BodyMeasurementsController.xib */,
 				D35C116617BE10AE0002A6AF /* GirthMeasurementsController.h */,
 				D35C116717BE10AE0002A6AF /* GirthMeasurementsController.m */,
-				D35C116817BE10AE0002A6AF /* GirthMeasurementsController.xib */,
 				D3B6B28F17B38F910008DDFA /* Supporting Files */,
 			);
 			path = MyBodyRules;
@@ -112,6 +123,8 @@
 		D3B6B28F17B38F910008DDFA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D3DE6D6A17C0F53300825EAF /* back.jpeg */,
+				D3DE6D6817C0F28900825EAF /* images.jpeg */,
 				D3B6B29017B38F910008DDFA /* MyBodyRules-Info.plist */,
 				D3B6B29117B38F910008DDFA /* InfoPlist.strings */,
 				D3B6B29417B38F910008DDFA /* main.m */,
@@ -180,8 +193,8 @@
 				D3B6B29D17B38F910008DDFA /* Default@2x.png in Resources */,
 				D3B6B29F17B38F910008DDFA /* Default-568h@2x.png in Resources */,
 				D3B6B2A217B38F910008DDFA /* MainStoryboard.storyboard in Resources */,
-				D35C116A17BE10AE0002A6AF /* GirthMeasurementsController.xib in Resources */,
-				D35C116F17BE21A10002A6AF /* BodyMeasurementsController.xib in Resources */,
+				D3DE6D6917C0F28900825EAF /* images.jpeg in Resources */,
+				D3DE6D6B17C0F53300825EAF /* back.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +210,7 @@
 				D3B6B2A517B38F910008DDFA /* MyProfileViewController.m in Sources */,
 				D35C116917BE10AE0002A6AF /* GirthMeasurementsController.m in Sources */,
 				D35C116E17BE21A10002A6AF /* BodyMeasurementsController.m in Sources */,
+				170EEE9E17BF6EE200F7CF7E /* TPKeyboardAvoidingScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
