@@ -45,7 +45,20 @@
     
     
 }
-
+-(IBAction)resetButtonClicked
+{
+    
+    self.shoulderField.text = @"";
+    self.hipsField.text = @"";
+    self.chestField.text=@"";
+    self.rThighField.text=@"";
+    self.lThighField.text=@"";
+    self.navalField.text=@"";
+    self.rBicepField.text=@"";
+    self.lBicepField.text=@"";
+    self.lCalfField.text=@"";
+    self.rCalfField.text=@"";
+}
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     if (textField == self.shoulderField || textField == self.hipsField ||textField == self.chestField ||textField == self.rThighField ||textField == self.navalField ||textField == self.lThighField ||textField == self.rBicepField ||textField == self.rCalfField||textField == self.lBicepField||textField == self.lCalfField )

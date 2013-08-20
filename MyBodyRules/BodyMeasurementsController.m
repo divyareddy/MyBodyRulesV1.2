@@ -9,7 +9,12 @@
 #import "BodyMeasurementsController.h"
 
 @interface BodyMeasurementsController ()
-
+{
+    float db;
+    int skinfoldtotal ;
+    float skinfoldsqroot;
+    
+}
 @end
 
 @implementation BodyMeasurementsController
@@ -28,6 +33,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+   UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame= CGRectMake(220, 127, 159, 50);
+
+    [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 
     UIBarButtonItem *imagesButton = [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss:)];
@@ -46,8 +57,51 @@
     int skintotal = [tricepField.text intValue]+[umbilicusField.text intValue]+[siliacField.text intValue]+[subscapField.text intValue]+[axilaField.text intValue]+[pecField.text intValue]+[thighField.text intValue];
     
     skinfoldLabel.text =[NSString stringWithFormat: @"%d", skintotal];
-
     
+    bodydensityLabel.text = [NSString stringWithFormat: @"%f" ,roundf(db)];
+    
+    bodyfatLabel.text = [NSString stringWithFormat:@"%f",(4.95/db)*100 ];
+    
+    float totalbodyfat = ([bodyfatLabel.text intValue]/100)* [weightTextField.text floatValue];
+
+    leanbodymassLabel.text = [NSString stringWithFormat:@"%f",[weightTextField.text floatValue]- totalbodyfat];
+}
+
+-(IBAction)changeSegment
+{
+    
+    skinfoldtotal= [skinfoldLabel.text intValue];
+    skinfoldsqroot = skinfoldtotal * skinfoldtotal;
+
+    if(genderField.selectedSegmentIndex == 0)
+    {
+        
+       db = 1.112-(0.00043499 *skinfoldtotal)+(0.00000055 * skinfoldsqroot)-(0.000288826*[ageTextField.text intValue]);
+        
+        
+    }
+    if(genderField.selectedSegmentIndex == 1)
+    {
+        db= 1.097 - (0.00046971 * skinfoldtotal) +(0.00000056 * skinfoldsqroot)- (0.00012828 * [ageTextField.text intValue]);
+        
+    }
+    
+}
+
+
+-(IBAction)resetButtonClicked
+{
+    self.nameTextField.text = @"";
+    self.weightTextField.text=@"";
+    self.ageTextField.text=@"";
+    self.dateTextField.text=@"";
+    self.tricepField.text=@"";
+    self.umbilicusField.text=@"";
+    self.siliacField.text=@"";
+    self.subscapField.text=@"";
+    self.axilaField.text=@"";
+    self.pecField.text=@"";
+    self.thighField.text=@"";
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -101,6 +155,41 @@
     return YES;
 }
 
+
+-(void)buttonAction:(UIButton *)sender
+{
+    UIViewController *viewController = [[UIViewController alloc]init];
+    UIView *viewForDatePicker = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 300, 200)];
+    
+    datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 300, 200)];
+    datepicker.datePickerMode = UIDatePickerModeDate;
+    datepicker.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+   
+    
+    [datepicker addTarget:self action:@selector(dueDateChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    datepicker.backgroundColor = [UIColor blackColor];
+    
+    [viewForDatePicker addSubview:datepicker];
+    [viewController.view addSubview:viewForDatePicker];
+
+    //[self.view addSubview:datepicker];
+    popOverForDatePicker = [[UIPopoverController alloc]initWithContentViewController:viewController];
+    popOverForDatePicker.delegate = self;
+    [popOverForDatePicker setPopoverContentSize:CGSizeMake(300, 200) animated:NO];
+    [popOverForDatePicker presentPopoverFromRect:sender.frame inView:self.view  permittedArrowDirections:(UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown| UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight) animated:YES];
+    
+}
+-(void) dueDateChanged:(UIDatePicker *)sender {
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterLongStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    
+    self.dateTextField.text = [dateFormatter stringFromDate:[sender date]];
+       
+    NSLog(@"Picked the date %@", [dateFormatter stringFromDate:[sender date]]);
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -109,6 +198,11 @@
 
 -(void) dismiss
 {
+    
+}
+- (IBAction)backGroundClick:(id)sender {
+    
+    [datepicker removeFromSuperview];
     
 }
 @end

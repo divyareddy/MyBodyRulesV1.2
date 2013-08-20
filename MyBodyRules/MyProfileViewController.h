@@ -21,7 +21,7 @@
 @property (nonatomic, strong) UIImage *unrotatedImage;
 @property (nonatomic,strong) IBOutlet UIButton *summary,*myProfile,*bodyMeasurements;
 @property (nonatomic, strong) IBOutlet UIImageView *photoImageView1,*photoImageView2;
-- (IBAction)whenbodyMeasurementsClicked;
+- (IBAction)whenbodyMeasurementsClicked:(UIButton *)sender;
 - (IBAction)whenmyProfileClicked;
 - (IBAction)whensummaryClicked;
 
