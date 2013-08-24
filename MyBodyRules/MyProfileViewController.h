@@ -7,20 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
+#include <AssetsLibrary/AssetsLibrary.h> 
 
 @interface MyProfileViewController : UIViewController <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPopoverControllerDelegate>
 {
     UIButton *bodyMeasurements;
      UIButton *myProfile;
      UIButton *summary;
-    UIImageView *photoImageView1,*photoImageView2;
+    UIImageView *beforeImageView,*afterImageView;
+    
+    ALAssetsLibrary *library;
+    NSArray *imageArray;
+    NSMutableArray *mutableArray;
+    NSArray *loadedArray;
+    NSInteger imageIndex;
   
 
 }
+-(void)allPhotosCollected:(NSArray*)imgArray;
+- (IBAction)handleBeforeSwipe:(UIGestureRecognizer *)sender;
 @property (strong) UIPopoverController *popoverImageViewController;
 @property (nonatomic, strong) UIImage *unrotatedImage;
+- (IBAction)handleAfterSwipe:(UIGestureRecognizer *)sender;
 @property (nonatomic,strong) IBOutlet UIButton *summary,*myProfile,*bodyMeasurements;
-@property (nonatomic, strong) IBOutlet UIImageView *photoImageView1,*photoImageView2;
+@property (nonatomic, strong) IBOutlet UIImageView *beforeImageView,*afterImageView;
 - (IBAction)whenbodyMeasurementsClicked:(UIButton *)sender;
 - (IBAction)whenmyProfileClicked;
 - (IBAction)whensummaryClicked;

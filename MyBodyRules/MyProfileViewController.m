@@ -17,20 +17,78 @@
 
 {
     BOOL isFirstImage;
+
     
 }
 
 @end
 
 @implementation MyProfileViewController
-@synthesize myProfile,summary,bodyMeasurements,photoImageView1,popoverImageViewController,photoImageView2;
+@synthesize myProfile,summary,bodyMeasurements,beforeImageView,popoverImageViewController,afterImageView;
 
+     static int count =0;
 
+-(void)getAllPictures
+{
+    imageArray=[[NSArray alloc] init];
+    mutableArray =[[NSMutableArray alloc]init];
+    NSMutableArray* assetURLDictionaries = [[NSMutableArray alloc] init];
+    
+    library = [[ALAssetsLibrary alloc] init];
+    
+    void (^assetEnumerator)( ALAsset *, NSUInteger, BOOL *) = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
+        if(result != nil) {
+            if([[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto]) {
+                [assetURLDictionaries addObject:[result valueForProperty:ALAssetPropertyURLs]];
+                
+                NSURL *url= (NSURL*) [[result defaultRepresentation]url];
+                
+                [library assetForURL:url
+                         resultBlock:^(ALAsset *asset) {
+                             [mutableArray addObject:[UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]]];
+                             
+                             if ([mutableArray count]==count)
+                             {
+                                 imageArray=[[NSArray alloc] initWithArray:mutableArray];
+                                 [self allPhotosCollected:imageArray];
+                             }
+                         }
+                        failureBlock:^(NSError *error){ NSLog(@"operation was not successfull!"); } ];
+                
+            }
+        }
+    };
+    
+    NSMutableArray *assetGroups = [[NSMutableArray alloc] init];
+    
+    void (^ assetGroupEnumerator) ( ALAssetsGroup *, BOOL *)= ^(ALAssetsGroup *group, BOOL *stop) {
+        if(group != nil) {
+            [group enumerateAssetsUsingBlock:assetEnumerator];
+            [assetGroups addObject:group];
+            count=[group numberOfAssets];
+        }
+    };
+    
+    assetGroups = [[NSMutableArray alloc] init];
+    
+    [library enumerateGroupsWithTypes:ALAssetsGroupAll
+                           usingBlock:assetGroupEnumerator
+                         failureBlock:^(NSError *error) {NSLog(@"There is an error");}];
+}
+
+-(void)allPhotosCollected:(NSArray*)imgArray
+{
+    //write your code here after getting all the photos from library...
+    NSLog(@"all pictures are %@",imgArray);
+    loadedArray = imgArray;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+        imageIndex = [loadedArray count];
+    [self getAllPictures];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -105,53 +163,6 @@
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	
-	if (actionSheet.tag == 100) {
-		
-		if (buttonIndex == 0) {
-			
-			UIImagePickerController *imgPhoto = [[UIImagePickerController alloc] init];
-			imgPhoto.sourceType = UIImagePickerControllerSourceTypeCamera;
-			imgPhoto.delegate = self;
-			imgPhoto.allowsEditing = YES;
-            
-            UIPopoverController *popOver = [[UIPopoverController alloc] initWithContentViewController:imgPhoto];
-            popOver.delegate = self;
-            self.popoverImageViewController = popOver;
-            [self.popoverImageViewController presentPopoverFromRect:CGRectMake(0, 0, 160, 40) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-
-			
-		}
-		else if (buttonIndex == 1) {
-			
-			UIImagePickerController *imgPhoto = [[UIImagePickerController alloc] init];
-			imgPhoto.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-			imgPhoto.delegate = self;
-			imgPhoto.allowsEditing = YES;
-            
-            UIPopoverController *popOver = [[UIPopoverController alloc] initWithContentViewController:imgPhoto];
-            popOver.delegate = self;
-            self.popoverImageViewController = popOver;
-            [self.popoverImageViewController presentPopoverFromRect:CGRectMake(0, 0, 160, 40) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-
-		}
-	}
-	else {
-		
-		if (buttonIndex == 0) {
-			
-			UIImagePickerController *imgPhoto = [[UIImagePickerController alloc] init];
-			imgPhoto.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-			imgPhoto.delegate = self;
-			imgPhoto.allowsEditing = YES;
-            
-            UIPopoverController *popOver = [[UIPopoverController alloc] initWithContentViewController:imgPhoto];
-            popOver.delegate = self;
-            self.popoverImageViewController = popOver;
-            [self.popoverImageViewController presentPopoverFromRect:CGRectMake(0, 0, 160, 40) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-
-		}
-	}
-    
     if(actionSheet.tag == 200)
     {
         if (buttonIndex == 0) {
@@ -177,6 +188,54 @@
         }
         
     }
+
+	if (actionSheet.tag == 100) {
+		
+		if (buttonIndex == 0) {
+			
+			UIImagePickerController *imgPhoto = [[UIImagePickerController alloc] init];
+			imgPhoto.sourceType = UIImagePickerControllerSourceTypeCamera;
+			imgPhoto.delegate = self;
+			imgPhoto.allowsEditing = YES;
+            
+            UIPopoverController *popOver = [[UIPopoverController alloc] initWithContentViewController:imgPhoto];
+            popOver.delegate = self;
+            self.popoverImageViewController = popOver;
+            [self.popoverImageViewController presentPopoverFromRect:CGRectMake(10, 678, 160, 40) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+
+			
+		}
+		else if (buttonIndex == 1) {
+			
+			UIImagePickerController *imgPhoto = [[UIImagePickerController alloc] init];
+			imgPhoto.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+			imgPhoto.delegate = self;
+			imgPhoto.allowsEditing = YES;
+            
+            UIPopoverController *popOver = [[UIPopoverController alloc] initWithContentViewController:imgPhoto];
+            popOver.delegate = self;
+            self.popoverImageViewController = popOver;
+            [self.popoverImageViewController presentPopoverFromRect:CGRectMake(10,678 , 160, 40) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+
+		}
+	}
+	else if(actionSheet.tag == 101){
+		
+		if (buttonIndex == 0) {
+			
+			UIImagePickerController *imgPhoto = [[UIImagePickerController alloc] init];
+			imgPhoto.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+			imgPhoto.delegate = self;
+			imgPhoto.allowsEditing = YES;
+            
+            UIPopoverController *popOver = [[UIPopoverController alloc] initWithContentViewController:imgPhoto];
+            popOver.delegate = self;
+            self.popoverImageViewController = popOver;
+            [self.popoverImageViewController presentPopoverFromRect:CGRectMake(0, 0, 160, 40) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+
+		}
+	}
+    
     else
     {
         NSLog(@"user pressed Button Indexed 1");
@@ -191,13 +250,13 @@
     
 	if ([info objectForKey:UIImagePickerControllerEditedImage] != nil) {
         if (isFirstImage) {
-            self.photoImageView1.image = [info objectForKey:UIImagePickerControllerEditedImage];
+            self.beforeImageView.image = [info objectForKey:UIImagePickerControllerEditedImage];
            
-            self.photoImageView1.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+            self.beforeImageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
         }else{
-            self.photoImageView2.image = [info objectForKey:UIImagePickerControllerEditedImage];
+            self.afterImageView.image = [info objectForKey:UIImagePickerControllerEditedImage];
            
-            self.photoImageView2.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+            self.afterImageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
 
         }
         
@@ -250,4 +309,51 @@
     
 }
 
+
+- (IBAction)handleBeforeSwipe:(UIGestureRecognizer *)sender {
+    
+    NSLog(@"swiped");
+ 
+    
+        UISwipeGestureRecognizerDirection direction= [(UISwipeGestureRecognizer * )sender direction];
+    
+    switch (direction) {
+        case UISwipeGestureRecognizerDirectionLeft:
+            imageIndex++;
+        
+            break;
+        case UISwipeGestureRecognizerDirectionRight:
+            imageIndex--;
+            
+            break;
+        default:
+            break;
+    }
+    
+    imageIndex = (imageIndex < 0) ? ([loadedArray count] -1): 
+    imageIndex % [loadedArray count];
+    beforeImageView.image = (UIImage*)[loadedArray objectAtIndex:imageIndex];
+    
+}
+- (IBAction)handleAfterSwipe:(UIGestureRecognizer *)sender {
+    
+    UISwipeGestureRecognizerDirection direction= [(UISwipeGestureRecognizer * )sender direction];
+    
+    switch (direction) {
+        case UISwipeGestureRecognizerDirectionLeft:
+            imageIndex++;
+            
+            break;
+        case UISwipeGestureRecognizerDirectionRight:
+            imageIndex--;
+            
+            break;
+        default:
+            break;
+    }
+    
+    imageIndex = (imageIndex < 0) ? ([loadedArray count] -1):
+    imageIndex % [loadedArray count];
+    afterImageView.image = (UIImage*)[loadedArray objectAtIndex:imageIndex];
+}
 @end

@@ -10,6 +10,11 @@
 		170EEE9E17BF6EE200F7CF7E /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EEE9D17BF6EE200F7CF7E /* TPKeyboardAvoidingScrollView.m */; };
 		D35C116917BE10AE0002A6AF /* GirthMeasurementsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D35C116717BE10AE0002A6AF /* GirthMeasurementsController.m */; };
 		D35C116E17BE21A10002A6AF /* BodyMeasurementsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D35C116C17BE21A10002A6AF /* BodyMeasurementsController.m */; };
+		D39EA9E217C8BC1800CE9FAB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D39EA9E117C8BC1800CE9FAB /* AssetsLibrary.framework */; };
+		D39EA9E817C8E35400CE9FAB /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = D39EA9E717C8E35400CE9FAB /* launch.png */; };
+		D39EA9EA17C8E3EB00CE9FAB /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = D39EA9E917C8E3EB00CE9FAB /* splash.png */; };
+		D39EA9ED17C8ECC900CE9FAB /* after.png in Resources */ = {isa = PBXBuildFile; fileRef = D39EA9EB17C8ECC900CE9FAB /* after.png */; };
+		D39EA9EE17C8ECC900CE9FAB /* before.png in Resources */ = {isa = PBXBuildFile; fileRef = D39EA9EC17C8ECC900CE9FAB /* before.png */; };
 		D3B6B28917B38F910008DDFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B6B28817B38F910008DDFA /* UIKit.framework */; };
 		D3B6B28B17B38F910008DDFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B6B28A17B38F910008DDFA /* Foundation.framework */; };
 		D3B6B28D17B38F910008DDFA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B6B28C17B38F910008DDFA /* CoreGraphics.framework */; };
@@ -32,6 +37,11 @@
 		D35C116717BE10AE0002A6AF /* GirthMeasurementsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GirthMeasurementsController.m; path = ../GirthMeasurementsController.m; sourceTree = "<group>"; };
 		D35C116B17BE21A10002A6AF /* BodyMeasurementsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyMeasurementsController.h; sourceTree = "<group>"; };
 		D35C116C17BE21A10002A6AF /* BodyMeasurementsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyMeasurementsController.m; sourceTree = "<group>"; };
+		D39EA9E117C8BC1800CE9FAB /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		D39EA9E717C8E35400CE9FAB /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
+		D39EA9E917C8E3EB00CE9FAB /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
+		D39EA9EB17C8ECC900CE9FAB /* after.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = after.png; sourceTree = "<group>"; };
+		D39EA9EC17C8ECC900CE9FAB /* before.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = before.png; sourceTree = "<group>"; };
 		D3B6B28517B38F910008DDFA /* MyBodyRules.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBodyRules.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B6B28817B38F910008DDFA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D3B6B28A17B38F910008DDFA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -57,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D39EA9E217C8BC1800CE9FAB /* AssetsLibrary.framework in Frameworks */,
 				D3B6B28917B38F910008DDFA /* UIKit.framework in Frameworks */,
 				D3B6B28B17B38F910008DDFA /* Foundation.framework in Frameworks */,
 				D3B6B28D17B38F910008DDFA /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +84,22 @@
 				170EEE9D17BF6EE200F7CF7E /* TPKeyboardAvoidingScrollView.m */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		D39EA9E417C8CAD700CE9FAB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D3B6B29717B38F910008DDFA /* MyProfileViewAppDelegate.h */,
+				D3B6B29817B38F910008DDFA /* MyProfileViewAppDelegate.m */,
+				D3B6B2A317B38F910008DDFA /* MyProfileViewController.h */,
+				D3B6B2A417B38F910008DDFA /* MyProfileViewController.m */,
+				D35C116B17BE21A10002A6AF /* BodyMeasurementsController.h */,
+				D35C116C17BE21A10002A6AF /* BodyMeasurementsController.m */,
+				D35C116617BE10AE0002A6AF /* GirthMeasurementsController.h */,
+				D35C116717BE10AE0002A6AF /* GirthMeasurementsController.m */,
+				D3B6B2A017B38F910008DDFA /* MainStoryboard.storyboard */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		D3B6B27C17B38F910008DDFA = {
@@ -95,6 +122,7 @@
 		D3B6B28717B38F910008DDFA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D39EA9E117C8BC1800CE9FAB /* AssetsLibrary.framework */,
 				D3B6B28817B38F910008DDFA /* UIKit.framework */,
 				D3B6B28A17B38F910008DDFA /* Foundation.framework */,
 				D3B6B28C17B38F910008DDFA /* CoreGraphics.framework */,
@@ -105,16 +133,8 @@
 		D3B6B28E17B38F910008DDFA /* MyBodyRules */ = {
 			isa = PBXGroup;
 			children = (
+				D39EA9E417C8CAD700CE9FAB /* Controller */,
 				170EEE9B17BF6EE200F7CF7E /* Custom */,
-				D3B6B29717B38F910008DDFA /* MyProfileViewAppDelegate.h */,
-				D3B6B29817B38F910008DDFA /* MyProfileViewAppDelegate.m */,
-				D3B6B2A017B38F910008DDFA /* MainStoryboard.storyboard */,
-				D3B6B2A317B38F910008DDFA /* MyProfileViewController.h */,
-				D3B6B2A417B38F910008DDFA /* MyProfileViewController.m */,
-				D35C116B17BE21A10002A6AF /* BodyMeasurementsController.h */,
-				D35C116C17BE21A10002A6AF /* BodyMeasurementsController.m */,
-				D35C116617BE10AE0002A6AF /* GirthMeasurementsController.h */,
-				D35C116717BE10AE0002A6AF /* GirthMeasurementsController.m */,
 				D3B6B28F17B38F910008DDFA /* Supporting Files */,
 			);
 			path = MyBodyRules;
@@ -123,6 +143,10 @@
 		D3B6B28F17B38F910008DDFA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D39EA9EB17C8ECC900CE9FAB /* after.png */,
+				D39EA9EC17C8ECC900CE9FAB /* before.png */,
+				D39EA9E917C8E3EB00CE9FAB /* splash.png */,
+				D39EA9E717C8E35400CE9FAB /* launch.png */,
 				D3DE6D6A17C0F53300825EAF /* back.jpeg */,
 				D3DE6D6817C0F28900825EAF /* images.jpeg */,
 				D3B6B29017B38F910008DDFA /* MyBodyRules-Info.plist */,
@@ -195,6 +219,10 @@
 				D3B6B2A217B38F910008DDFA /* MainStoryboard.storyboard in Resources */,
 				D3DE6D6917C0F28900825EAF /* images.jpeg in Resources */,
 				D3DE6D6B17C0F53300825EAF /* back.jpeg in Resources */,
+				D39EA9E817C8E35400CE9FAB /* launch.png in Resources */,
+				D39EA9EA17C8E3EB00CE9FAB /* splash.png in Resources */,
+				D39EA9ED17C8ECC900CE9FAB /* after.png in Resources */,
+				D39EA9EE17C8ECC900CE9FAB /* before.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
