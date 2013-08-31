@@ -32,7 +32,7 @@
 @property (nonatomic,strong) IBOutlet UIButton *summary,*myProfile,*bodyMeasurements;
 @property (nonatomic, strong) IBOutlet UIImageView *beforeImageView,*afterImageView;
 - (IBAction)whenbodyMeasurementsClicked:(UIButton *)sender;
-- (IBAction)whenmyProfileClicked;
+- (IBAction)whenmyFitnessClicked:(UIButton *)sender;
 - (IBAction)whensummaryClicked;
 
 -(IBAction)btnPhotoClick:(id)sender;

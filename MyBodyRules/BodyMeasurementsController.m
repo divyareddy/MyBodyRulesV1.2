@@ -11,7 +11,8 @@
 @interface BodyMeasurementsController ()
 {
     float db;
-    int skinfoldtotal ;
+    BOOL flag;
+    int skinfoldtotal,skintotal ;
     float skinfoldsqroot;
     
 }
@@ -48,45 +49,87 @@
 	
 	[self.toolbar setItems:[NSArray arrayWithObjects:flex, imagesButton, fixed, nil]];
     
-[self.view addSubview:toolbar];
+       
+        
+     [self.view addSubview:toolbar];
    
     // Do any additional setup after loading the view from its nib.
 }
 -(IBAction)calculateButtonClicked:(id)sender{
     
-    int skintotal = [tricepField.text intValue]+[umbilicusField.text intValue]+[siliacField.text intValue]+[subscapField.text intValue]+[axilaField.text intValue]+[pecField.text intValue]+[thighField.text intValue];
+    if ([self.nameTextField.text isEqual: @" "]||[self.ageTextField.text isEqualToString:@""]||[self.weightTextField.text isEqualToString:@""]||[self.tricepField.text isEqualToString:@""]||[self.umbilicusField.text isEqualToString:@""]||[self.siliacField.text isEqualToString:@""]||[self.subscapField.text isEqualToString:@""]||[self.axilaField.text isEqualToString:@""]||[self.pecField.text isEqualToString:@""]||[self.thighField.text isEqualToString:@""]) {
+        
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Please Fill  all the Details"
+                                                          message:nil
+                                                         delegate:self
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil, nil];
+        [message show];
+    }
+    else
+    {
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    [formatter setMaximumFractionDigits:2];
+    
+    [formatter setRoundingMode: NSNumberFormatterRoundUp];
+    
+    skintotal = [tricepField.text intValue]+[umbilicusField.text intValue]+[siliacField.text intValue]+[subscapField.text intValue]+[axilaField.text intValue]+[pecField.text intValue]+[thighField.text intValue];
+    //skinfoldtotal= [skinfoldLabel.text intValue]
+    skinfoldsqroot = skintotal * skintotal;
+
+    if(flag==0)
+    {
+       db = 1.112-(0.00043499 *skintotal)+(0.00000055 * skinfoldsqroot)-(0.00028826*[ageTextField.text intValue]);
+    }if(flag ==1 )
+    {
+        db= 1.097 - (0.00046971 * skintotal) +(0.00000056 * skinfoldsqroot)- (0.00012828 * [ageTextField.text intValue]);
+    }
+   
     
     skinfoldLabel.text =[NSString stringWithFormat: @"%d", skintotal];
     
-    bodydensityLabel.text = [NSString stringWithFormat: @"%f" ,roundf(db)];
+    float dbvalue = db;
     
-    bodyfatLabel.text = [NSString stringWithFormat:@"%f",(4.95/db)*100 ];
-    
-    float totalbodyfat = ([bodyfatLabel.text intValue]/100)* [weightTextField.text floatValue];
+    NSString *numberdb = [formatter stringFromNumber:[NSNumber numberWithFloat:dbvalue]];
 
-    leanbodymassLabel.text = [NSString stringWithFormat:@"%f",[weightTextField.text floatValue]- totalbodyfat];
+    
+    bodydensityLabel.text = numberdb;
+    
+    
+    float bodytotal = ((4.95/db)-4.5)*100 ;
+    NSString *numberString = [formatter stringFromNumber:[NSNumber numberWithFloat:bodytotal]];
+
+    float totalbodyfat = (bodytotal /100)* [weightTextField.text floatValue];
+
+     bodyfatLabel.text = numberString;
+    
+    float leanbody = [weightTextField.text floatValue] - totalbodyfat;
+    NSString *number = [formatter stringFromNumber:[NSNumber numberWithFloat:leanbody]];
+    
+
+    leanbodymassLabel.text = number;
+    }
 }
-
 -(IBAction)changeSegment
 {
-    
-    skinfoldtotal= [skinfoldLabel.text intValue];
-    skinfoldsqroot = skinfoldtotal * skinfoldtotal;
-
+     
     if(genderField.selectedSegmentIndex == 0)
     {
-        
-       db = 1.112-(0.00043499 *skinfoldtotal)+(0.00000055 * skinfoldsqroot)-(0.000288826*[ageTextField.text intValue]);
-        
-        
+        flag =0;
     }
     if(genderField.selectedSegmentIndex == 1)
     {
-        db= 1.097 - (0.00046971 * skinfoldtotal) +(0.00000056 * skinfoldsqroot)- (0.00012828 * [ageTextField.text intValue]);
-        
+        flag = 1;
+    
     }
     
 }
+
+    
 
 
 -(IBAction)resetButtonClicked
@@ -102,6 +145,10 @@
     self.axilaField.text=@"";
     self.pecField.text=@"";
     self.thighField.text=@"";
+    self.skinfoldLabel.text=@"";
+    self.leanbodymassLabel.text=@"";
+    self.bodydensityLabel.text=@"";
+    self.bodyfatLabel.text=@"";
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{

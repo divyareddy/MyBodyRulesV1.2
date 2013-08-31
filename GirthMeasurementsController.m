@@ -57,6 +57,7 @@
     self.rBicepField.text=@"";
     self.lBicepField.text=@"";
     self.lCalfField.text=@"";
+    self.totalLabel.text=@"";
     self.rCalfField.text=@"";
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

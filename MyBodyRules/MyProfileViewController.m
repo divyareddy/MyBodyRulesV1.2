@@ -115,21 +115,12 @@
     
     [actionSheet showFromRect: sender.frame inView: sender.superview animated: YES];
 
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-//                                                    message:nil
-//                                                   delegate:self
-//                                          cancelButtonTitle:@"Body Composition"
-//                                          otherButtonTitles:@"Girth Measurements", nil];
-//
-//    
-//    [alert setTag:301];
-//    
-//        [alert show];
+
     
 }
 
 
--(IBAction)btnPhotoClick:(id)sender
+-(IBAction)btnPhotoClick:(UIButton *)sender
 {
     UIButton *mButton = (UIButton *)sender;
     
@@ -148,7 +139,8 @@
             UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:titleStr delegate:self cancelButtonTitle:@"cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a Photo", @"Choose A Photo", nil, nil];
             
             [action setTag:100];
-            [action showInView:self.view];
+           // [action showInView:self.view];
+            [action showFromRect: sender.frame inView: sender.superview animated: YES];
         
         }
         else {
@@ -156,7 +148,9 @@
             UIActionSheet *action = [[UIActionSheet alloc]initWithTitle:titleStr delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Choose A Photo", nil, nil];
             
             [action setTag:101];
-            [action showInView:self.view];
+           // [action showInView:self.view];
+            [action showFromRect: sender.frame inView: sender.superview animated: YES];
+
           
         }
     
@@ -170,7 +164,7 @@
             UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
             
             BodyMeasurementsController *firstViewController= [mainStoryBoard instantiateViewControllerWithIdentifier:@"body.measurements"];
-            NSLog(@"%@", self.navigationController);
+          //  NSLog(@"%@", self.navigationController);
             //[firstViewController.view setFrame:self.view.bounds];
             [self.navigationController pushViewController:firstViewController animated:YES];
             //[self.view addSubview:firstViewController.view];
@@ -180,7 +174,7 @@
             UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
             
             GirthMeasurementsController *secondViewController= [mainStoryBoard instantiateViewControllerWithIdentifier:@"body.girth"];
-            NSLog(@"%@", self.navigationController);
+            //NSLog(@"%@", self.navigationController);
             //[firstViewController.view setFrame:self.view.bounds];
             [self.navigationController pushViewController:secondViewController animated:YES];
             
@@ -243,7 +237,9 @@
     }
 
 
+
 }
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
 	
 
@@ -299,8 +295,17 @@
         // Any action can be performed here
     }
 }
-- (IBAction)whenmyProfileClicked
+- (IBAction)whenmyFitnessClicked:(UIButton *)sender
 {
+    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle: nil
+                                                              delegate: self
+                                                     cancelButtonTitle: nil
+                                                destructiveButtonTitle: nil
+                                                     otherButtonTitles: @"Max Heart Rate",
+                                   @"Resting heart rate", nil];
+    [actionSheet setTag:200];
+    
+    [actionSheet showFromRect: sender.frame inView: sender.superview animated: YES];
     
 }
 
